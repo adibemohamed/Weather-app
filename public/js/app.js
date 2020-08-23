@@ -1914,9 +1914,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
-    console.log('Component mounted.');
+    console.log("Component mounted.");
   }
 });
 
@@ -37511,7 +37523,33 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [_c("h1", [_vm._v("Klima: Weather app")])])
+    return _c("div", { staticClass: "text-white pb-0" }, [
+      _c("div", { staticClass: "place-input" }, [
+        _c("input", { staticClass: "w-full", attrs: { type: "text" } })
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass:
+            "weather-container font-sans w-128 max-w-lg overflow-hidden bg-gray-900 shadow-lg mt-4"
+        },
+        [
+          _c(
+            "div",
+            {
+              staticClass:
+                "current-weather flex items-center justify-between px-6 py-8"
+            },
+            [
+              _c("div", [_vm._v("One")]),
+              _vm._v(" "),
+              _c("div", [_vm._v("Two")])
+            ]
+          )
+        ]
+      )
+    ])
   }
 ]
 render._withStripped = true
