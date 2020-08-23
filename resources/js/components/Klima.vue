@@ -34,7 +34,8 @@
             <div>5°C</div>
             <div>-2°C</div>
           </div>
-        </div> <div class="flex items-center mt-8">
+        </div>
+        <div class="flex items-center mt-8">
           <div class="w-1/6 text-lg text-gray-200">MON</div>
           <div class="w-4/6 py-4 flex items-center">
             <div class="">icon</div>
@@ -44,7 +45,8 @@
             <div>5°C</div>
             <div>-2°C</div>
           </div>
-        </div> <div class="flex items-center mt-8">
+        </div>
+        <div class="flex items-center mt-8">
           <div class="w-1/6 text-lg text-gray-200">MON</div>
           <div class="w-4/6 py-4 flex items-center">
             <div class="">icon</div>
@@ -65,7 +67,22 @@
 <script>
 export default {
   mounted() {
-    console.log("Component mounted.");
+    this.fetchData();
+  },
+  methods: {
+    fetchData() {
+      axios
+        .get(
+          "https://api.weatherbit.io/v2.0/current?city=Raleigh,NC&key=b8cbb3b5938e4e88a590474f8f079560"
+        )
+        .then(response => {
+          
+          console.log(response.data);
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    }
   }
 };
 </script>

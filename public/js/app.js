@@ -1972,9 +1972,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
-    console.log("Component mounted.");
+    this.fetchData();
+  },
+  methods: {
+    fetchData: function fetchData() {
+      axios.get("https://api.weatherbit.io/v2.0/current?city=Raleigh,NC&key=b8cbb3b5938e4e88a590474f8f079560").then(function (response) {
+        console.log(response.data);
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    }
   }
 });
 
