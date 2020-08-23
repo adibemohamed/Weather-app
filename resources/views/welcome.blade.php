@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="/css/main.css">
     <script src="/js/app.js" defer></script>
 </head>
-<body class="bg-blue-500">
-    <div class="" id="app">
-        <h1>Klima app</h1>
+<body class="bg-blue-200">
+    <div id="app"  class="flex justify-center pt-16">
+        <klima></klima>
     </div>
  </body>
 </html>
