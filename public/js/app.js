@@ -1926,6 +1926,52 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     console.log("Component mounted.");
@@ -37542,9 +37588,94 @@ var staticRenderFns = [
                 "current-weather flex items-center justify-between px-6 py-8"
             },
             [
-              _c("div", [_vm._v("One")]),
+              _c("div", { staticClass: "flex items-center" }, [
+                _c("div", [
+                  _c("div", { staticClass: "text-6xl font-semibold" }, [
+                    _vm._v("8°C")
+                  ]),
+                  _vm._v(" "),
+                  _c("div", {}, [_vm._v("Feels like 2°C")])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "mx-5" }, [
+                  _c("div", { staticClass: "font-semibold" }, [
+                    _vm._v("Cloudy")
+                  ]),
+                  _vm._v(" "),
+                  _c("div", [_vm._v("Toronto, Canada")])
+                ])
+              ]),
               _vm._v(" "),
-              _c("div", [_vm._v("Two")])
+              _c("div", [_vm._v("icon")])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "future-weather text-sm bg-gray-800 px-6 py-8  overflow-hidden"
+            },
+            [
+              _c("div", { staticClass: "flex items-center mt-8" }, [
+                _c("div", { staticClass: "w-1/6 text-lg text-gray-200" }, [
+                  _vm._v("MON")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "w-4/6 py-4 flex items-center" }, [
+                  _c("div", {}, [_vm._v("icon")]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "ml-3" }, [
+                    _vm._v("Cloudy with chance of showers")
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "w-1/6 text-right" }, [
+                  _c("div", [_vm._v("5°C")]),
+                  _vm._v(" "),
+                  _c("div", [_vm._v("-2°C")])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "flex items-center mt-8" }, [
+                _c("div", { staticClass: "w-1/6 text-lg text-gray-200" }, [
+                  _vm._v("MON")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "w-4/6 py-4 flex items-center" }, [
+                  _c("div", {}, [_vm._v("icon")]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "ml-3" }, [
+                    _vm._v("Cloudy with chance of showers")
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "w-1/6 text-right" }, [
+                  _c("div", [_vm._v("5°C")]),
+                  _vm._v(" "),
+                  _c("div", [_vm._v("-2°C")])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "flex items-center mt-8" }, [
+                _c("div", { staticClass: "w-1/6 text-lg text-gray-200" }, [
+                  _vm._v("MON")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "w-4/6 py-4 flex items-center" }, [
+                  _c("div", {}, [_vm._v("icon")]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "ml-3" }, [
+                    _vm._v("Cloudy with chance of showers")
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "w-1/6 text-right" }, [
+                  _c("div", [_vm._v("5°C")]),
+                  _vm._v(" "),
+                  _c("div", [_vm._v("-2°C")])
+                ])
+              ])
             ]
           )
         ]
