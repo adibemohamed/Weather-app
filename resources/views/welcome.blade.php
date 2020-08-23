@@ -9,6 +9,9 @@
     <script src="/js/app.js" defer></script>
 </head>
 <body class="bg-blue-500">
-    
+    <div class="" id="app">
+        <h1>Klima app</h1>
+    </div>
  </body>
 </html>
+
