@@ -22,6 +22,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('/weather', function () {
     $apiKey = config('services.weatherbit.key');
-    $response = Zttp::get("https://api.weatherbit.io/v2.0/current?city=Raleigh,NC&key=$apiKey");
+    $lat = request('lat');
+    $lng = request('lng');
+    $response = Zttp::get("https://api.weatherbit.io/v2.0/current?lat=$lan&lon=$lng&key=$apiKey");
     return $response;
 });
