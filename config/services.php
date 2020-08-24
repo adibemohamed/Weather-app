@@ -31,7 +31,7 @@ return [
     ],
     
     'weatherbit' => [
-        'key' => env('b8cbb3b5938e4e88a590474f8f079560'),
+        'key' => env('WEATHERBIT_KEY'),
         
     ],
 

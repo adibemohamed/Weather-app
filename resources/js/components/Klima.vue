@@ -71,20 +71,19 @@ export default {
   },
   methods: {
     fetchData() {
-    fetch("https://cors-anywhere.herokuapp.com/https://api.weatherbit.io/v2.0/current?city=Raleigh,NC&key=b8cbb3b5938e4e88a590474f8f079560"
-, {
-	"method": "GET",
-	"headers": {
-		"x-rapidapi-host": "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com",
-		"x-rapidapi-key": "SIGN-UP-FOR-KEY"
-	}
-})
-.then(response => {
-	console.log(response);
-})
-.catch(err => {
-	console.log(err);
-});
+      fetch(
+        "/api/weather",
+        {
+          method: "GET",
+          
+        }
+      )
+        .then(response => {
+          console.log(response);
+        })
+        .catch(err => {
+          console.log(err);
+        });
     }
   }
 };
