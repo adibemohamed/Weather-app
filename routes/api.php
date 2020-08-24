@@ -24,6 +24,6 @@ Route::get('/weather', function () {
     $apiKey = config('services.weatherbit.key');
     $lat = request('lat');
     $lng = request('lng');
-    $response = Zttp::get("https://api.weatherbit.io/v2.0/current?lat=$lan&lon=$lng&key=$apiKey");
+    $response = Zttp::get("https://api.weatherbit.io/v2.0/current?lat=$lat&lon=$lng&key=$apiKey");
     return $response;
 });

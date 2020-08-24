@@ -1978,9 +1978,19 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     this.fetchData();
   },
+  data: function data() {
+    return {
+      location: {
+        // name: 'Toronto, Canada',
+        lat: 35.775,
+        lng: -78.638
+      }
+    };
+  },
   methods: {
     fetchData: function fetchData() {
-      fetch("/api/weather", {
+      console.log("/api/weather?lat=".concat(this.location.lat, "&lng=").concat(this.location.lng));
+      fetch("/api/weather?lat=".concat(this.location.lat, "&lng=").concat(this.location.lng), {
         method: "GET"
       }).then(function (response) {
         console.log(response);

@@ -69,10 +69,20 @@ export default {
   mounted() {
     this.fetchData();
   },
+  data: ()=> {
+    return ({
+      location :{
+        // name: 'Toronto, Canada',
+        lat: 35.775,
+        lng: -78.638
+      }
+    })
+  },
   methods: {
     fetchData() {
+      console.log(  `/api/weather?lat=${this.location.lat}&lng=${this.location.lng}`)
       fetch(
-        "/api/weather",
+        `/api/weather?lat=${this.location.lat}&lng=${this.location.lng}`,
         {
           method: "GET",
           
