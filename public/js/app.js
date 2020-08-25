@@ -1997,15 +1997,11 @@ __webpack_require__.r(__webpack_exports__);
     fetchData: function fetchData() {
       var _this = this;
 
-      fetch("/api/weather?lat=".concat(this.location.lat, "&lng=").concat(this.location.lng)).then(function (response) {
-        // console.log(response);
-        _this.cureentTemperature.actual = response;
-        console.log("🔥 " + response);
-      })["catch"](function (err) {
-        console.log(err);
-      });
-      axios.get("/api/weather?lat=".concat(this.location.lat, "&lng=").concat(this.location.lng)).then(function (res) {
-        console.log(res);
+      fetch("/api/weather?lat=".concat(this.location.lat, "&lng=").concat(this.location.lng)).then(function (res) {
+        return res.json();
+      }).then(function (data) {
+        _this.cureentTemperature.actual = data.data[0].temp;
+        console.log(data.data);
       })["catch"](function (err) {
         console.log(err);
       });

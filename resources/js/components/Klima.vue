@@ -86,20 +86,12 @@ export default {
   },
   methods: {
     fetchData() {
-      fetch(`/api/weather?lat=${this.location.lat}&lng=${this.location.lng}`)
-        .then(response => {
-          // console.log(response);
-          this.cureentTemperature.actual = response;
-          console.log("🔥 " +  response )
-        })
-        .catch(err => {
-          console.log(err);
-          
-        });
 
-        axios.get(`/api/weather?lat=${this.location.lat}&lng=${this.location.lng}`)
-        .then(res => {
-          console.log(res);
+       fetch(`/api/weather?lat=${this.location.lat}&lng=${this.location.lng}`)
+        .then(res => res.json())
+        .then(data => { 
+          this.cureentTemperature.actual = data.data[0].temp;
+          console.log(data.data);
         })
         .catch(err => {
           console.log(err);
