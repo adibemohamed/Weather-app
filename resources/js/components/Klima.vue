@@ -17,7 +17,9 @@
             <div>{{ location.name }}</div>
           </div>
         </div>
-        <div>icon</div>
+        <div>
+          <canvas ref="iconCurrent" id="iconCurrent" width="96" height="96"></canvas>
+        </div>
       </div>
       <!-- end current wwather -->
 
