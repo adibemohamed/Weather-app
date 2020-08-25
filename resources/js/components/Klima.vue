@@ -9,12 +9,12 @@
       <div class="current-weather flex items-center justify-between px-6 py-8">
         <div class="flex items-center">
           <div>
-            <div class="text-6xl font-semibold">8°C</div>
-            <div class="">Feels like 2°C</div>
+            <div class="text-6xl font-semibold">{{ currentTemperature.actual }}°C</div>
+            <div class="">Feels like {{ currentTemperature.feels }}°C</div>
           </div>
           <div class="mx-5">
-            <div class="font-semibold">Cloudy</div>
-            <div>Toronto, Canada</div>
+            <div class="font-semibold">{{ currentTemperature.summary }}</div>
+            <div>{{ location.name }}</div>
           </div>
         </div>
         <div>icon</div>
@@ -71,14 +71,14 @@ export default {
   },
   data: () => {
     return {
-      cureentTemperature: {
+      currentTemperature: {
         actual: '',
         feels: '',
         summary: '',
         icon: ''
       },
       location: {
-        // name: 'Toronto, Canada',
+        name: 'Toronto, Canada',
         lat: 35.775,
         lng: -78.638
       }
@@ -90,7 +90,10 @@ export default {
        fetch(`/api/weather?lat=${this.location.lat}&lng=${this.location.lng}`)
         .then(res => res.json())
         .then(data => { 
-          this.cureentTemperature.actual = data.data[0].temp;
+          this.currentTemperature.actual = data.data[0].temp;
+          this.currentTemperature.feels = data.data[0].temp;
+          this.currentTemperature.summary = data.data[0].weather.description;
+          this.currentTemperature.icon = data.data[0].weather.icon;
           console.log(data.data);
         })
         .catch(err => {
