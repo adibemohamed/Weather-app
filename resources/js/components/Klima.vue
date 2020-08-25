@@ -69,31 +69,41 @@ export default {
   mounted() {
     this.fetchData();
   },
-  data: ()=> {
-    return ({
-      location :{
+  data: () => {
+    return {
+      cureentTemperature: {
+        actual: '',
+        feels: '',
+        summary: '',
+        icon: ''
+      },
+      location: {
         // name: 'Toronto, Canada',
         lat: 35.775,
         lng: -78.638
       }
-    })
+    };
   },
   methods: {
     fetchData() {
-      console.log(  `/api/weather?lat=${this.location.lat}&lng=${this.location.lng}`)
-      fetch(
-        `/api/weather?lat=${this.location.lat}&lng=${this.location.lng}`,
-        {
-          method: "GET",
-          
-        }
-      )
+      fetch(`/api/weather?lat=${this.location.lat}&lng=${this.location.lng}`)
         .then(response => {
-          console.log(response);
+          // console.log(response);
+          this.cureentTemperature.actual = response;
+          console.log("🔥 " +  response )
         })
         .catch(err => {
           console.log(err);
+          
         });
+
+        axios.get(`/api/weather?lat=${this.location.lat}&lng=${this.location.lng}`)
+        .then(res => {
+          console.log(res);
+        })
+        .catch(err => {
+          console.log(err);
+        })
     }
   }
 };

@@ -1980,6 +1980,12 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
+      cureentTemperature: {
+        actual: '',
+        feels: '',
+        summary: '',
+        icon: ''
+      },
       location: {
         // name: 'Toronto, Canada',
         lat: 35.775,
@@ -1989,11 +1995,17 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     fetchData: function fetchData() {
-      console.log("/api/weather?lat=".concat(this.location.lat, "&lng=").concat(this.location.lng));
-      fetch("/api/weather?lat=".concat(this.location.lat, "&lng=").concat(this.location.lng), {
-        method: "GET"
-      }).then(function (response) {
-        console.log(response);
+      var _this = this;
+
+      fetch("/api/weather?lat=".concat(this.location.lat, "&lng=").concat(this.location.lng)).then(function (response) {
+        // console.log(response);
+        _this.cureentTemperature.actual = response;
+        console.log("🔥 " + response);
+      })["catch"](function (err) {
+        console.log(err);
+      });
+      axios.get("/api/weather?lat=".concat(this.location.lat, "&lng=").concat(this.location.lng)).then(function (res) {
+        console.log(res);
       })["catch"](function (err) {
         console.log(err);
       });
