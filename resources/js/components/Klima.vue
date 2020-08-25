@@ -89,6 +89,8 @@ export default {
   methods: {
     fetchData() {
 
+       var skycons = new Skycons({'color': 'white'});
+
        fetch(`/api/weather?lat=${this.location.lat}&lng=${this.location.lng}`)
         .then(res => res.json())
         .then(data => { 
@@ -97,6 +99,7 @@ export default {
           this.currentTemperature.summary = data.data[0].weather.description;
           this.currentTemperature.icon = data.data[0].weather.icon;
           console.log(data.data);
+           skycons.add("iconCurrent", 'partly-cloudy-day');
         })
         .catch(err => {
           console.log(err);

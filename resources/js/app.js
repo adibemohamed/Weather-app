@@ -5,6 +5,7 @@
  */
 
 require('./bootstrap');
+require('./skycons');
 
 window.Vue = require('vue');
 
