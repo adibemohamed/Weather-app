@@ -1966,6 +1966,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     this.fetchData();
@@ -1973,13 +1984,13 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       currentTemperature: {
-        actual: '',
-        feels: '',
-        summary: '',
-        icon: ''
+        actual: "",
+        feels: "",
+        summary: "",
+        icon: ""
       },
       location: {
-        name: 'Toronto, Canada',
+        name: "Toronto, Canada",
         lat: 35.775,
         lng: -78.638
       },
@@ -1991,7 +2002,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       var skycons = new Skycons({
-        'color': 'white'
+        color: "white"
       });
       fetch("/api/weather?lat=".concat(this.location.lat, "&lng=").concat(this.location.lng)).then(function (res) {
         return res.json();
@@ -2004,15 +2015,15 @@ __webpack_require__.r(__webpack_exports__);
           _this.daily.push(day);
         });
         console.log(data.data);
-        skycons.add("iconCurrent", _this.toKababCase('partly-cloudy-day'));
+        skycons.add("iconCurrent", _this.toKababCase("partly-cloudy-day"));
         skycons.play();
 
         _this.$nextTick(function () {
-          skycons.add('icon1', document.getElementById('icon1').getAttribute('data-icon'));
-          skycons.add('icon2', document.getElementById('icon2').getAttribute('data-icon'));
-          skycons.add('icon3', document.getElementById('icon3').getAttribute('data-icon'));
-          skycons.add('icon4', document.getElementById('icon4').getAttribute('data-icon'));
-          skycons.add('icon5', document.getElementById('icon5').getAttribute('data-icon'));
+          skycons.add("icon1", document.getElementById("icon1").getAttribute("data-icon"));
+          skycons.add("icon2", document.getElementById("icon2").getAttribute("data-icon"));
+          skycons.add("icon3", document.getElementById("icon3").getAttribute("data-icon"));
+          skycons.add("icon4", document.getElementById("icon4").getAttribute("data-icon"));
+          skycons.add("icon5", document.getElementById("icon5").getAttribute("data-icon"));
           skycons.play();
         });
       })["catch"](function (err) {
@@ -2020,11 +2031,11 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     toKababCase: function toKababCase(string) {
-      return string.split(' ').join('-');
+      return string.split(" ").join("-");
     },
     toDayOfWeek: function toDayOfWeek(timestamp) {
       var newDate = new Date(timestamp * 1000);
-      var days = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
+      var days = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
       return days[newDate.getDay()];
     }
   }
@@ -37634,7 +37645,11 @@ var render = function() {
             _c("div", { staticClass: "flex items-center" }, [
               _c("div", [
                 _c("div", { staticClass: "text-6xl font-semibold" }, [
-                  _vm._v(_vm._s(_vm.currentTemperature.actual) + "°C")
+                  _vm._v(
+                    "\n            " +
+                      _vm._s(_vm.currentTemperature.actual) +
+                      "°C\n          "
+                  )
                 ]),
                 _vm._v(" "),
                 _c("div", {}, [
@@ -37679,7 +37694,11 @@ var render = function() {
                   },
                   [
                     _c("div", { staticClass: "w-1/6 text-lg text-gray-200" }, [
-                      _vm._v(_vm._s(_vm.toDayOfWeek(day.ts)))
+                      _vm._v(
+                        "\n          " +
+                          _vm._s(_vm.toDayOfWeek(day.ts)) +
+                          "\n        "
+                      )
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "w-4/6 py-4 flex items-center" }, [
@@ -37724,7 +37743,19 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "place-input" }, [
-      _c("input", { staticClass: "w-full", attrs: { type: "text" } })
+      _c("input", {
+        staticClass: "form-control",
+        attrs: {
+          type: "search",
+          id: "address",
+          placeholder: "Choose a city..."
+        }
+      }),
+      _vm._v(" "),
+      _c("p", [
+        _vm._v("Selected: "),
+        _c("strong", { attrs: { id: "address-value" } }, [_vm._v("none")])
+      ])
     ])
   }
 ]
