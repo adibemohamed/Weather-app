@@ -1997,7 +1997,6 @@ __webpack_require__.r(__webpack_exports__);
     var $address = document.querySelector("#address-value");
     placesAutocomplete.on("change", function (e) {
       $address.textContent = e.suggestion.value;
-      console.log(e.suggestion);
       _this.location.name = "".concat(e.suggestion.name, ", ").concat(e.suggestion.country);
       _this.location.lat = e.suggestion.latlng.lat;
       _this.location.lng = e.suggestion.latlng.lng;
@@ -2047,8 +2046,8 @@ __webpack_require__.r(__webpack_exports__);
         data.data.map(function (day) {
           _this2.daily.push(day);
         });
-        console.log(data.data);
-        skycons.add("iconCurrent", _this2.toKababCase("partly-cloudy-day"));
+        console.log(_this2.daily[0]);
+        skycons.add("iconCurrent", _this2.toSkyicons("partly-cloudy-day"));
         skycons.play();
 
         _this2.$nextTick(function () {
@@ -2063,8 +2062,72 @@ __webpack_require__.r(__webpack_exports__);
         console.log(err);
       });
     },
-    toKababCase: function toKababCase(string) {
-      return string.split(" ").join("-");
+    toSkyicons: function toSkyicons(code) {
+      switch (code) {
+        case '800':
+        case '801':
+        case '802':
+          return Skycons.CLEAR_DAY;
+          break;
+
+        case '800':
+          return Skycons.CLEAR_NIGHT;
+          break;
+
+        case '801':
+        case '802':
+        case '803':
+        case '804':
+          return Skycons.PARTLY_CLOUDY_DAY;
+          break;
+
+        case '800':
+          return Skycons.PARTLY_CLOUDY_NIGHT;
+          break;
+
+        case '800':
+          return Skycons.CLOUDY;
+          break;
+
+        case '200':
+        case '201':
+        case '202':
+        case '230':
+        case '231':
+        case '232':
+        case '233':
+        case '300':
+        case '301':
+        case '302':
+        case '500':
+        case '501':
+        case '502':
+        case '511':
+        case '520':
+        case '521':
+        case '522':
+          return Skycons.RAIN;
+          break;
+
+        case '600':
+        case '611':
+          return Skycons.SLEET;
+          break;
+
+        case '621':
+        case '622':
+        case '623':
+          return Skycons.SNOW;
+          break;
+
+        case '800':
+          return Skycons.WIND;
+          break;
+
+        case '800':
+          return Skycons.FOG;
+          break;
+      }
     },
     toDayOfWeek: function toDayOfWeek(timestamp) {
       var newDate = new Date(timestamp * 1000);
@@ -37739,7 +37802,7 @@ var render = function() {
                         _c("canvas", {
                           attrs: {
                             id: "icon" + (index + 1),
-                            "data-icon": _vm.toKababCase("partly cloudy day"),
+                            "data-icon": _vm.toSkyicons(day.weather.code),
                             height: "24",
                             width: "24"
                           }

@@ -53,7 +53,7 @@
             <div class="">
               <canvas
                 :id="`icon${index + 1}`"
-                :data-icon="toKababCase('partly cloudy day')"
+                :data-icon="toSkyicons(day.weather.code)"
                 height="24"
                 width="24"
               ></canvas>
@@ -87,8 +87,7 @@ export default {
     // get the location
     var $address = document.querySelector("#address-value");
     placesAutocomplete.on("change", (e) => {
-      $address.textContent = e.suggestion.value;
-      console.log(e.suggestion);
+      $address.textContent = e.suggestion.value; 
       this.location.name = `${e.suggestion.name}, ${e.suggestion.country}`;
       this.location.lat = e.suggestion.latlng.lat;
       this.location.lng = e.suggestion.latlng.lng;
@@ -137,9 +136,9 @@ export default {
           data.data.map(day => {
             this.daily.push(day);
           });
-
-          console.log(data.data);
-          skycons.add("iconCurrent", this.toKababCase("partly-cloudy-day"));
+            console.log(this.daily[0])
+ 
+          skycons.add("iconCurrent", this.toSkyicons("partly-cloudy-day"));
           skycons.play();
 
           this.$nextTick(() => {
@@ -170,8 +169,63 @@ export default {
           console.log(err);
         });
     },
-    toKababCase(string) {
-      return string.split(" ").join("-");
+    toSkyicons(code) { 
+      switch(code) {
+        case '800':
+        case '801':
+        case '802':
+          return Skycons.CLEAR_DAY;
+        break; 
+        case '800':
+          return Skycons.CLEAR_NIGHT;
+        break; 
+        case '801':
+        case '802':
+        case '803':
+        case '804':
+          return Skycons.PARTLY_CLOUDY_DAY;
+        break; 
+        case '800':
+          return Skycons.PARTLY_CLOUDY_NIGHT;
+        break; 
+        case '800':
+          return Skycons.CLOUDY;
+        break; 
+        case '200':
+        case '201':
+        case '202':
+        case '230':
+        case '231':
+        case '232':
+        case '233':
+        case '300':
+        case '301':
+        case '302':
+        case '500':
+        case '501':
+        case '502':
+        case '511':
+        case '520':
+        case '521':
+        case '522':
+          return Skycons.RAIN;
+        break; 
+        case '600':
+        case '611':
+          return Skycons.SLEET;
+        break; 
+        case '621':
+        case '622':
+        case '623':
+          return Skycons.SNOW;
+        break; 
+        case '800':
+          return Skycons.WIND;
+        break; 
+        case '800':
+          return Skycons.FOG;
+        break; 
+      }
     },
     toDayOfWeek(timestamp) {
       const newDate = new Date(timestamp * 1000);
