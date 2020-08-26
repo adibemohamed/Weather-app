@@ -1977,9 +1977,26 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     this.fetchData();
+    var placesAutocomplete = places({
+      appId: 'plXPYTW07XSN',
+      apiKey: '235e8ffff339e06e22dacd3e304f47e8',
+      container: document.querySelector('#address')
+    });
+    var $address = document.querySelector('#address-value');
+    placesAutocomplete.on('change', function (e) {
+      $address.textContent = e.suggestion.value;
+    });
+    placesAutocomplete.on('clear', function () {
+      $address.textContent = 'none';
+    });
   },
   data: function data() {
     return {
@@ -37744,7 +37761,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "place-input" }, [
       _c("input", {
-        staticClass: "form-control",
+        staticClass: "form-control text-blue-900",
         attrs: {
           type: "search",
           id: "address",

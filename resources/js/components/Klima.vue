@@ -1,7 +1,12 @@
 <template>
   <div class="text-white pb-0">
     <div class="place-input">
-       <input type="search" id="address" class="form-control" placeholder="Choose a city..." />
+      <input
+        type="search"
+        id="address"
+        class="form-control text-blue-900"
+        placeholder="Choose a city..."
+      />
       <p>Selected: <strong id="address-value">none</strong></p>
     </div>
     <div
@@ -71,6 +76,23 @@
 export default {
   mounted() {
     this.fetchData();
+
+    var placesAutocomplete = places({
+    appId: 'plXPYTW07XSN',
+        apiKey: '235e8ffff339e06e22dacd3e304f47e8',
+        container: document.querySelector('#address')
+  });
+
+  var $address = document.querySelector('#address-value')
+  placesAutocomplete.on('change', function(e) {
+    $address.textContent = e.suggestion.value
+  });
+
+  placesAutocomplete.on('clear', function() {
+    $address.textContent = 'none';
+  }); 
+
+  
   },
   data: () => {
     return {
