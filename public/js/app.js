@@ -1984,19 +1984,35 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
+    var _this = this;
+
+    // get weather data
     this.fetchData();
     var placesAutocomplete = places({
-      appId: 'plXPYTW07XSN',
-      apiKey: '235e8ffff339e06e22dacd3e304f47e8',
-      container: document.querySelector('#address')
-    });
-    var $address = document.querySelector('#address-value');
-    placesAutocomplete.on('change', function (e) {
+      appId: "plXPYTW07XSN",
+      apiKey: "235e8ffff339e06e22dacd3e304f47e8",
+      container: document.querySelector("#address")
+    }); // get the location
+
+    var $address = document.querySelector("#address-value");
+    placesAutocomplete.on("change", function (e) {
       $address.textContent = e.suggestion.value;
+      console.log(e.suggestion);
+      _this.location.name = "".concat(e.suggestion.name, ", ").concat(e.suggestion.country);
+      _this.location.lat = e.suggestion.latlng.lat;
+      _this.location.lng = e.suggestion.latlng.lng;
     });
-    placesAutocomplete.on('clear', function () {
-      $address.textContent = 'none';
+    placesAutocomplete.on("clear", function () {
+      $address.textContent = "none";
     });
+  },
+  watch: {
+    location: {
+      handler: function handler(newValue, oldValue) {
+        this.fetchData();
+      },
+      deep: true
+    }
   },
   data: function data() {
     return {
@@ -2016,7 +2032,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     fetchData: function fetchData() {
-      var _this = this;
+      var _this2 = this;
 
       var skycons = new Skycons({
         color: "white"
@@ -2024,18 +2040,18 @@ __webpack_require__.r(__webpack_exports__);
       fetch("/api/weather?lat=".concat(this.location.lat, "&lng=").concat(this.location.lng)).then(function (res) {
         return res.json();
       }).then(function (data) {
-        _this.currentTemperature.actual = data.data[0].temp;
-        _this.currentTemperature.feels = data.data[0].temp;
-        _this.currentTemperature.summary = data.data[0].weather.description;
-        _this.currentTemperature.icon = data.data[0].weather.icon;
+        _this2.currentTemperature.actual = data.data[0].temp;
+        _this2.currentTemperature.feels = data.data[0].temp;
+        _this2.currentTemperature.summary = data.data[0].weather.description;
+        _this2.currentTemperature.icon = data.data[0].weather.icon;
         data.data.map(function (day) {
-          _this.daily.push(day);
+          _this2.daily.push(day);
         });
         console.log(data.data);
-        skycons.add("iconCurrent", _this.toKababCase("partly-cloudy-day"));
+        skycons.add("iconCurrent", _this2.toKababCase("partly-cloudy-day"));
         skycons.play();
 
-        _this.$nextTick(function () {
+        _this2.$nextTick(function () {
           skycons.add("icon1", document.getElementById("icon1").getAttribute("data-icon"));
           skycons.add("icon2", document.getElementById("icon2").getAttribute("data-icon"));
           skycons.add("icon3", document.getElementById("icon3").getAttribute("data-icon"));

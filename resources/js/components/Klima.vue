@@ -75,24 +75,36 @@
 <script>
 export default {
   mounted() {
+    // get weather data
     this.fetchData();
 
     var placesAutocomplete = places({
-    appId: 'plXPYTW07XSN',
-        apiKey: '235e8ffff339e06e22dacd3e304f47e8',
-        container: document.querySelector('#address')
-  });
+      appId: "plXPYTW07XSN",
+      apiKey: "235e8ffff339e06e22dacd3e304f47e8",
+      container: document.querySelector("#address")
+    });
 
-  var $address = document.querySelector('#address-value')
-  placesAutocomplete.on('change', function(e) {
-    $address.textContent = e.suggestion.value
-  });
+    // get the location
+    var $address = document.querySelector("#address-value");
+    placesAutocomplete.on("change", (e) => {
+      $address.textContent = e.suggestion.value;
+      console.log(e.suggestion);
+      this.location.name = `${e.suggestion.name}, ${e.suggestion.country}`;
+      this.location.lat = e.suggestion.latlng.lat;
+      this.location.lng = e.suggestion.latlng.lng;
+    });
 
-  placesAutocomplete.on('clear', function() {
-    $address.textContent = 'none';
-  }); 
-
-  
+    placesAutocomplete.on("clear", function() {
+      $address.textContent = "none";
+    });
+  },
+  watch: {
+    location: {
+      handler(newValue, oldValue) {
+        this.fetchData();
+      },
+      deep: true
+    }
   },
   data: () => {
     return {
