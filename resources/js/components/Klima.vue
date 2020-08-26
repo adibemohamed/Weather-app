@@ -26,37 +26,19 @@
       <div
         class="future-weather text-sm bg-gray-800 px-6 py-8  overflow-hidden"
       >
-        <div class="flex items-center mt-8">
-          <div class="w-1/6 text-lg text-gray-200">MON</div>
+        <div 
+        v-for="(day, index) in daily"
+        :key="day.time"
+        class="flex items-center mt-8"
+        :class="{'mt-8' : index > 0}">
+          <div class="w-1/6 text-lg text-gray-200">{{ day.datetime }}</div>
           <div class="w-4/6 py-4 flex items-center">
             <div class="">icon</div>
-            <div class="ml-3">Cloudy with chance of showers</div>
+            <div class="ml-3">{{ day.weather.description }}</div>
           </div>
           <div class="w-1/6 text-right">
-            <div>5°C</div>
-            <div>-2°C</div>
-          </div>
-        </div>
-        <div class="flex items-center mt-8">
-          <div class="w-1/6 text-lg text-gray-200">MON</div>
-          <div class="w-4/6 py-4 flex items-center">
-            <div class="">icon</div>
-            <div class="ml-3">Cloudy with chance of showers</div>
-          </div>
-          <div class="w-1/6 text-right">
-            <div>5°C</div>
-            <div>-2°C</div>
-          </div>
-        </div>
-        <div class="flex items-center mt-8">
-          <div class="w-1/6 text-lg text-gray-200">MON</div>
-          <div class="w-4/6 py-4 flex items-center">
-            <div class="">icon</div>
-            <div class="ml-3">Cloudy with chance of showers</div>
-          </div>
-          <div class="w-1/6 text-right">
-            <div>5°C</div>
-            <div>-2°C</div>
+            <div>{{ Math.round(day.high_temp) }}°C</div>
+            <div>{{ Math.round(day.low_temp) }}°C</div>
           </div>
         </div>
       </div>
@@ -83,7 +65,8 @@ export default {
         name: 'Toronto, Canada',
         lat: 35.775,
         lng: -78.638
-      }
+      },
+      daily: []
     };
   },
   methods: {
@@ -98,12 +81,21 @@ export default {
           this.currentTemperature.feels = data.data[0].temp;
           this.currentTemperature.summary = data.data[0].weather.description;
           this.currentTemperature.icon = data.data[0].weather.icon;
+
+          data.data.map(day => {
+              this.daily.push(day);
+          })
+
           console.log(data.data);
-           skycons.add("iconCurrent", 'partly-cloudy-day');
+           skycons.add("iconCurrent", this.toKababCase('partly-cloudy-day'));
+           skycons.play();
         })
         .catch(err => {
           console.log(err);
         })
+    },
+    toKababCase(string) {
+      return string.split(' ').join('-');
     }
   }
 };
