@@ -6,7 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Klima-Weather app</title>
     <link rel="stylesheet" href="/css/main.css">
-     <script src="/js/app.js" defer></script>
+    <script src="/js/app.js" defer></script>
+    <script src="/js/skycons.js" ></script>
 </head>
 <body class="bg-blue-200">
     <div id="app"  class="flex justify-center pt-16">
