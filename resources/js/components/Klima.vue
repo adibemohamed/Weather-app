@@ -98,7 +98,10 @@ export default {
       return string.split(' ').join('-');
     },
     toDayOfWeek(timestamp) {
-      const newDate = new Date(timestamp);
+      const newDate = new Date(timestamp * 1000);
+      const days = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
+
+      return days[newDate.getDay()];
     }
   }
 };

@@ -2006,7 +2006,9 @@ __webpack_require__.r(__webpack_exports__);
       return string.split(' ').join('-');
     },
     toDayOfWeek: function toDayOfWeek(timestamp) {
-      var newDate = new Date(timestamp);
+      var newDate = new Date(timestamp * 1000);
+      var days = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
+      return days[newDate.getDay()];
     }
   }
 });
