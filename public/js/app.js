@@ -1958,6 +1958,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     this.fetchData();
@@ -1998,6 +2006,15 @@ __webpack_require__.r(__webpack_exports__);
         console.log(data.data);
         skycons.add("iconCurrent", _this.toKababCase('partly-cloudy-day'));
         skycons.play();
+
+        _this.$nextTick(function () {
+          skycons.add('icon1', document.getElementById('icon1').getAttribute('data-icon'));
+          skycons.add('icon2', document.getElementById('icon2').getAttribute('data-icon'));
+          skycons.add('icon3', document.getElementById('icon3').getAttribute('data-icon'));
+          skycons.add('icon4', document.getElementById('icon4').getAttribute('data-icon'));
+          skycons.add('icon5', document.getElementById('icon5').getAttribute('data-icon'));
+          skycons.play();
+        });
       })["catch"](function (err) {
         console.log(err);
       });
@@ -37652,33 +37669,48 @@ var render = function() {
               "future-weather text-sm bg-gray-800 px-6 py-8  overflow-hidden"
           },
           _vm._l(_vm.daily, function(day, index) {
-            return _c(
-              "div",
-              {
-                key: day.time,
-                staticClass: "flex items-center mt-8",
-                class: { "mt-8": index > 0 }
-              },
-              [
-                _c("div", { staticClass: "w-1/6 text-lg text-gray-200" }, [
-                  _vm._v(_vm._s(_vm.toDayOfWeek(day.ts)))
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "w-4/6 py-4 flex items-center" }, [
-                  _c("div", {}, [_vm._v("icon")]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "ml-3" }, [
-                    _vm._v(_vm._s(day.weather.description))
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "w-1/6 text-right" }, [
-                  _c("div", [_vm._v(_vm._s(Math.round(day.high_temp)) + "°C")]),
-                  _vm._v(" "),
-                  _c("div", [_vm._v(_vm._s(Math.round(day.low_temp)) + "°C")])
-                ])
-              ]
-            )
+            return index < 5
+              ? _c(
+                  "div",
+                  {
+                    key: day.time,
+                    staticClass: "flex items-center mt-8",
+                    class: { "mt-8": index > 0 }
+                  },
+                  [
+                    _c("div", { staticClass: "w-1/6 text-lg text-gray-200" }, [
+                      _vm._v(_vm._s(_vm.toDayOfWeek(day.ts)))
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "w-4/6 py-4 flex items-center" }, [
+                      _c("div", {}, [
+                        _c("canvas", {
+                          attrs: {
+                            id: "icon" + (index + 1),
+                            "data-icon": _vm.toKababCase("partly cloudy day"),
+                            height: "24",
+                            width: "24"
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "ml-3" }, [
+                        _vm._v(_vm._s(day.weather.description))
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "w-1/6 text-right" }, [
+                      _c("div", [
+                        _vm._v(_vm._s(Math.round(day.high_temp)) + "°C")
+                      ]),
+                      _vm._v(" "),
+                      _c("div", [
+                        _vm._v(_vm._s(Math.round(day.low_temp)) + "°C")
+                      ])
+                    ])
+                  ]
+                )
+              : _vm._e()
           }),
           0
         )
