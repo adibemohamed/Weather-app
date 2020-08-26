@@ -2004,6 +2004,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     toKababCase: function toKababCase(string) {
       return string.split(' ').join('-');
+    },
+    toDayOfWeek: function toDayOfWeek(timestamp) {
+      var newDate = new Date(timestamp);
     }
   }
 });
@@ -37656,7 +37659,7 @@ var render = function() {
               },
               [
                 _c("div", { staticClass: "w-1/6 text-lg text-gray-200" }, [
-                  _vm._v(_vm._s(day.datetime))
+                  _vm._v(_vm._s(_vm.toDayOfWeek(day.ts)))
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "w-4/6 py-4 flex items-center" }, [

@@ -31,7 +31,7 @@
         :key="day.time"
         class="flex items-center mt-8"
         :class="{'mt-8' : index > 0}">
-          <div class="w-1/6 text-lg text-gray-200">{{ day.datetime }}</div>
+          <div class="w-1/6 text-lg text-gray-200">{{ toDayOfWeek(day.ts) }}</div>
           <div class="w-4/6 py-4 flex items-center">
             <div class="">icon</div>
             <div class="ml-3">{{ day.weather.description }}</div>
@@ -96,6 +96,9 @@ export default {
     },
     toKababCase(string) {
       return string.split(' ').join('-');
+    },
+    toDayOfWeek(timestamp) {
+      const newDate = new Date(timestamp);
     }
   }
 };
