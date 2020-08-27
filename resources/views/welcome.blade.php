@@ -12,8 +12,8 @@
     <script src="/js/skycons.js" ></script>
 
 </head>
-<body class="bg-gray-300">
-    <div id="app"  class="flex justify-center pt-20">
+<body class="bg-purple-300">
+    <div id="app"  class="flex justify-center pt-12">
         <klima></klima>
     </div>
  </body>

@@ -1976,6 +1976,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     var _this = this;
@@ -37637,14 +37638,22 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "text-white pb-0 shadow-2xl w-128" }, [
+  return _c("div", { staticClass: "text-white pb-0  w-128" }, [
+    _c(
+      "h1",
+      {
+        staticClass: "text-white font-black  py-12 text-6xl w-full text-center"
+      },
+      [_vm._v("Fresh Weather")]
+    ),
+    _vm._v(" "),
     _vm._m(0),
     _vm._v(" "),
     _c(
       "div",
       {
         staticClass:
-          "weather-container rounded  font-sans w-128 max-w-lg overflow-hidden bg-gray-900 shadow-lg mt-4",
+          "weather-container shadow-2xl rounded  font-sans w-128 max-w-lg overflow-hidden bg-gray-900 shadow-lg mt-4",
         staticStyle: { background: "#6e44ff" }
       },
       [

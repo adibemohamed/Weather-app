@@ -1,5 +1,6 @@
 <template>
-  <div class="text-white pb-0 shadow-2xl w-128">
+  <div class="text-white pb-0  w-128">
+    <h1 class="text-white font-black  py-12 text-6xl w-full text-center">Fresh Weather</h1>
     <div class="place-input">
       <input
         type="search"
@@ -11,7 +12,7 @@
       <p>Selected: <strong id="address-value">none</strong></p>
     </div>
     <div
-      class="weather-container rounded  font-sans w-128 max-w-lg overflow-hidden bg-gray-900 shadow-lg mt-4"
+      class="weather-container shadow-2xl rounded  font-sans w-128 max-w-lg overflow-hidden bg-gray-900 shadow-lg mt-4"
     style="background: #6e44ff;"
     >
       <div class="current-weather flex items-center justify-between px-6 py-8">
