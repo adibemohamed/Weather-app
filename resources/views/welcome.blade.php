@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Klima-Weather app</title>
     <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/weather-icons.min.css">
     <script src="https://cdn.jsdelivr.net/npm/places.js@1.19.0"></script> 
     <script src="/js/app.js" defer></script>
     <script src="/js/skycons.js" ></script>

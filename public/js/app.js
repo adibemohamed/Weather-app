@@ -1977,11 +1977,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     var _this = this;
@@ -37765,10 +37760,8 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("div", [
-              _c("canvas", {
-                ref: "iconCurrent",
-                attrs: { id: "iconCurrent", width: "96", height: "96" }
-              })
+              _c("i", { staticClass: "wi wi-day-sunny" }),
+              _vm._v(" " + _vm._s(_vm.currentTemperature.icon) + "\n      ")
             ])
           ]
         ),

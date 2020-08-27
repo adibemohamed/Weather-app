@@ -26,12 +26,7 @@
           </div>
         </div>
         <div>
-          <canvas
-            ref="iconCurrent"
-            id="iconCurrent"
-            width="96"
-            height="96"
-          ></canvas>
+          <i class="wi wi-day-sunny"></i> {{ currentTemperature.icon }}
         </div>
       </div>
       <!-- end current wwather -->
