@@ -1,16 +1,18 @@
 <template>
-  <div class="text-white pb-0">
+  <div class="text-white pb-0 shadow-2xl w-128">
     <div class="place-input">
       <input
         type="search"
         id="address"
-        class="form-control text-blue-900"
+        class="form-control text-blue-900 rounded w-128"
         placeholder="Choose a city..."
+       
       />
       <p>Selected: <strong id="address-value">none</strong></p>
     </div>
     <div
-      class="weather-container font-sans w-128 max-w-lg overflow-hidden bg-gray-900 shadow-lg mt-4"
+      class="weather-container rounded  font-sans w-128 max-w-lg overflow-hidden bg-gray-900 shadow-lg mt-4"
+    style="background: #6e44ff;"
     >
       <div class="current-weather flex items-center justify-between px-6 py-8">
         <div class="flex items-center">
@@ -32,12 +34,12 @@
       <!-- end current wwather -->
 
       <div
-        class="future-weather text-sm bg-gray-800 px-6 py-8  overflow-hidden"
+        class="future-weather text-sm  px-6 pt-0 pb-8  overflow-hidden"
       >
         <div
           v-for="(day, index) in daily"
           :key="day.time"
-          class="flex items-center mt-8"
+          class="flex items-center mt-8 border-t"
           :class="{ 'mt-8': index > 0 }"
           v-if="index < 5"
         >
@@ -83,6 +85,7 @@ export default {
       this.location.name = `${e.suggestion.name}, ${e.suggestion.country}`;
       this.location.lat = e.suggestion.latlng.lat;
       this.location.lng = e.suggestion.latlng.lng;
+      console.log(e)
     });
 
     placesAutocomplete.on("clear", function() {

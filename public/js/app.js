@@ -1974,6 +1974,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     var _this = this;
@@ -1992,6 +1994,7 @@ __webpack_require__.r(__webpack_exports__);
       _this.location.name = "".concat(e.suggestion.name, ", ").concat(e.suggestion.country);
       _this.location.lat = e.suggestion.latlng.lat;
       _this.location.lng = e.suggestion.latlng.lng;
+      console.log(e);
     });
     placesAutocomplete.on("clear", function () {
       $address.textContent = "none";
@@ -37634,14 +37637,15 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "text-white pb-0" }, [
+  return _c("div", { staticClass: "text-white pb-0 shadow-2xl w-128" }, [
     _vm._m(0),
     _vm._v(" "),
     _c(
       "div",
       {
         staticClass:
-          "weather-container font-sans w-128 max-w-lg overflow-hidden bg-gray-900 shadow-lg mt-4"
+          "weather-container rounded  font-sans w-128 max-w-lg overflow-hidden bg-gray-900 shadow-lg mt-4",
+        staticStyle: { background: "#6e44ff" }
       },
       [
         _c(
@@ -37685,7 +37689,7 @@ var render = function() {
           "div",
           {
             staticClass:
-              "future-weather text-sm bg-gray-800 px-6 py-8  overflow-hidden"
+              "future-weather text-sm  px-6 pt-0 pb-8  overflow-hidden"
           },
           _vm._l(_vm.daily, function(day, index) {
             return index < 5
@@ -37693,7 +37697,7 @@ var render = function() {
                   "div",
                   {
                     key: day.time,
-                    staticClass: "flex items-center mt-8",
+                    staticClass: "flex items-center mt-8 border-t",
                     class: { "mt-8": index > 0 }
                   },
                   [
@@ -37745,7 +37749,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "place-input" }, [
       _c("input", {
-        staticClass: "form-control text-blue-900",
+        staticClass: "form-control text-blue-900 rounded w-128",
         attrs: {
           type: "search",
           id: "address",
