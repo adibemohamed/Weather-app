@@ -2017,9 +2017,9 @@ __webpack_require__.r(__webpack_exports__);
         icon: ""
       },
       location: {
-        name: "Toronto, Canada",
-        lat: 35.775,
-        lng: -78.638
+        name: "Rabat, Morocco",
+        lat: 34.0224,
+        lng: -6.83454
       },
       daily: []
     };
