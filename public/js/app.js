@@ -1974,9 +1974,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     var _this = this;
@@ -2041,88 +2038,9 @@ __webpack_require__.r(__webpack_exports__);
         data.data.map(function (day) {
           _this2.daily.push(day);
         });
-        console.log(_this2.daily[0]);
-        skycons.add("iconCurrent", _this2.toSkyicons("partly-cloudy-day"));
-        skycons.play();
-
-        _this2.$nextTick(function () {
-          skycons.add("icon1", document.getElementById("icon1").getAttribute("data-icon"));
-          skycons.add("icon2", document.getElementById("icon2").getAttribute("data-icon"));
-          skycons.add("icon3", document.getElementById("icon3").getAttribute("data-icon"));
-          skycons.add("icon4", document.getElementById("icon4").getAttribute("data-icon"));
-          skycons.add("icon5", document.getElementById("icon5").getAttribute("data-icon"));
-          skycons.play();
-        });
       })["catch"](function (err) {
         console.log(err);
       });
-    },
-    toSkyicons: function toSkyicons(code) {
-      switch (code) {
-        case '800':
-        case '801':
-        case '802':
-          return Skycons.CLEAR_DAY;
-          break;
-
-        case '800':
-          return Skycons.CLEAR_NIGHT;
-          break;
-
-        case '801':
-        case '802':
-        case '803':
-        case '804':
-          return Skycons.PARTLY_CLOUDY_DAY;
-          break;
-
-        case '800':
-          return Skycons.PARTLY_CLOUDY_NIGHT;
-          break;
-
-        case '800':
-          return Skycons.CLOUDY;
-          break;
-
-        case '200':
-        case '201':
-        case '202':
-        case '230':
-        case '231':
-        case '232':
-        case '233':
-        case '300':
-        case '301':
-        case '302':
-        case '500':
-        case '501':
-        case '502':
-        case '511':
-        case '520':
-        case '521':
-        case '522':
-          return Skycons.RAIN;
-          break;
-
-        case '600':
-        case '611':
-          return Skycons.SLEET;
-          break;
-
-        case '621':
-        case '622':
-        case '623':
-          return Skycons.SNOW;
-          break;
-
-        case '800':
-          return Skycons.WIND;
-          break;
-
-        case '800':
-          return Skycons.FOG;
-          break;
-      }
     },
     toDayOfWeek: function toDayOfWeek(timestamp) {
       var newDate = new Date(timestamp * 1000);
@@ -37759,10 +37677,7 @@ var render = function() {
               ])
             ]),
             _vm._v(" "),
-            _c("div", [
-              _c("i", { staticClass: "wi wi-day-sunny" }),
-              _vm._v(" " + _vm._s(_vm.currentTemperature.icon) + "\n      ")
-            ])
+            _vm._m(1)
           ]
         ),
         _vm._v(" "),
@@ -37792,14 +37707,11 @@ var render = function() {
                     _vm._v(" "),
                     _c("div", { staticClass: "w-4/6 py-4 flex items-center" }, [
                       _c("div", {}, [
-                        _c("canvas", {
-                          attrs: {
-                            id: "icon" + (index + 1),
-                            "data-icon": _vm.toSkyicons(day.weather.code),
-                            height: "24",
-                            width: "24"
-                          }
-                        })
+                        _c("div", { staticClass: "text-2xl" }, [
+                          _c("i", {
+                            class: "wi wi-owm-night-" + day.weather.code
+                          })
+                        ])
                       ]),
                       _vm._v(" "),
                       _c("div", { staticClass: "ml-3" }, [
@@ -37845,6 +37757,14 @@ var staticRenderFns = [
         _vm._v("Selected: "),
         _c("strong", { attrs: { id: "address-value" } }, [_vm._v("none")])
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "text-6xl" }, [
+      _c("i", { staticClass: "wi wi-owm-night-202" })
     ])
   }
 ]

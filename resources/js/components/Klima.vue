@@ -25,8 +25,8 @@
             <div>{{ location.name }}</div>
           </div>
         </div>
-        <div>
-          <i class="wi wi-day-sunny"></i> {{ currentTemperature.icon }}
+        <div class="text-6xl">
+          <i class="wi wi-owm-night-202"></i>
         </div>
       </div>
       <!-- end current wwather -->
@@ -46,12 +46,9 @@
           </div>
           <div class="w-4/6 py-4 flex items-center">
             <div class="">
-              <canvas
-                :id="`icon${index + 1}`"
-                :data-icon="toSkyicons(day.weather.code)"
-                height="24"
-                width="24"
-              ></canvas>
+               <div class="text-2xl">
+                <i :class="`wi wi-owm-night-${day.weather.code}`"></i>
+              </div>
             </div>
             <div class="ml-3">{{ day.weather.description }}</div>
           </div>
@@ -129,99 +126,16 @@ export default {
           this.currentTemperature.icon = data.data[0].weather.icon;
 
           data.data.map(day => {
-            this.daily.push(day);
+            this.daily.push(day); 
           });
-            console.log(this.daily[0])
- 
-          skycons.add("iconCurrent", this.toSkyicons("partly-cloudy-day"));
-          skycons.play();
-
-          this.$nextTick(() => {
-            skycons.add(
-              "icon1",
-              document.getElementById("icon1").getAttribute("data-icon")
-            );
-            skycons.add(
-              "icon2",
-              document.getElementById("icon2").getAttribute("data-icon")
-            );
-            skycons.add(
-              "icon3",
-              document.getElementById("icon3").getAttribute("data-icon")
-            );
-            skycons.add(
-              "icon4",
-              document.getElementById("icon4").getAttribute("data-icon")
-            );
-            skycons.add(
-              "icon5",
-              document.getElementById("icon5").getAttribute("data-icon")
-            );
-            skycons.play();
-          });
+            
+         
         })
         .catch(err => {
           console.log(err);
         });
     },
-    toSkyicons(code) { 
-      switch(code) {
-        case '800':
-        case '801':
-        case '802':
-          return Skycons.CLEAR_DAY;
-        break; 
-        case '800':
-          return Skycons.CLEAR_NIGHT;
-        break; 
-        case '801':
-        case '802':
-        case '803':
-        case '804':
-          return Skycons.PARTLY_CLOUDY_DAY;
-        break; 
-        case '800':
-          return Skycons.PARTLY_CLOUDY_NIGHT;
-        break; 
-        case '800':
-          return Skycons.CLOUDY;
-        break; 
-        case '200':
-        case '201':
-        case '202':
-        case '230':
-        case '231':
-        case '232':
-        case '233':
-        case '300':
-        case '301':
-        case '302':
-        case '500':
-        case '501':
-        case '502':
-        case '511':
-        case '520':
-        case '521':
-        case '522':
-          return Skycons.RAIN;
-        break; 
-        case '600':
-        case '611':
-          return Skycons.SLEET;
-        break; 
-        case '621':
-        case '622':
-        case '623':
-          return Skycons.SNOW;
-        break; 
-        case '800':
-          return Skycons.WIND;
-        break; 
-        case '800':
-          return Skycons.FOG;
-        break; 
-      }
-    },
+      
     toDayOfWeek(timestamp) {
       const newDate = new Date(timestamp * 1000);
       const days = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
