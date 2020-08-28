@@ -1977,6 +1977,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     var _this = this;
@@ -2014,7 +2017,11 @@ __webpack_require__.r(__webpack_exports__);
         actual: "",
         feels: "",
         summary: "",
-        icon: ""
+        icon: "",
+        ts: null,
+        sunset_ts: null,
+        sunrise_ts: null,
+        dayOrNight: ""
       },
       location: {
         name: "Rabat, Morocco",
@@ -2038,7 +2045,13 @@ __webpack_require__.r(__webpack_exports__);
         _this2.currentTemperature.feels = data.data[0].temp;
         _this2.currentTemperature.summary = data.data[0].weather.description;
         _this2.currentTemperature.icon = data.data[0].weather.code;
+        _this2.currentTemperature.sunset_ts = data.data[0].sunset_ts;
+        _this2.currentTemperature.sunrise_ts = data.data[0].sunrise_ts;
+        _this2.currentTemperature.ts = data.data[0].ts;
         _this2.daily = data.data;
+        _this2.currentTemperature.dayOrNight = _this2.dayOrNight(_this2.currentTemperature.sunrise_ts, _this2.currentTemperature.sunset_ts, _this2.currentTemperature.ts, _this2.currentTemperature.actual);
+        console.log(data.data[0]);
+        console.log(_this2.currentTemperature.dayOrNight);
       })["catch"](function (err) {
         console.log(err);
       });
@@ -2047,6 +2060,24 @@ __webpack_require__.r(__webpack_exports__);
       var newDate = new Date(timestamp * 1000);
       var days = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
       return days[newDate.getDay()];
+    },
+    dayOrNight: function dayOrNight(sunrise_ts, sunset_ts, ts, actual) {
+      var sunrise = [new Date(sunrise_ts).getHours(), new Date(sunrise_ts).getMinutes()];
+      var sunset = [new Date(sunset_ts).getHours(), new Date(sunset_ts).getMinutes()];
+      var sunrise_m = sunrise[0] * 60 + sunrise[1];
+      var sunset_m = sunset[0] * 60 + sunset[1];
+      var now = new Date(ts);
+      var now_m = now.getHours() * 60 + now.getMinutes();
+
+      if (now_m > sunset_m - 60 && now_m <= sunset_m + 60) {
+        return 'night';
+      } else if (now_m > sunrise_m - 60 && now_m <= sunrise_m + 60) {
+        return 'day';
+      } else if (now_m > sunrise_m + 60 && now_m <= sunset_m - 60) {
+        return 'day';
+      } else {
+        return 'night';
+      }
     }
   }
 });
@@ -37641,7 +37672,7 @@ var render = function() {
       {
         staticClass: "text-white font-black  py-12 text-6xl w-full text-center"
       },
-      [_vm._v("Fresh Weather")]
+      [_vm._v("\n    Fresh Weather\n  ")]
     ),
     _vm._v(" "),
     _vm._m(0),
@@ -37689,7 +37720,11 @@ var render = function() {
             _vm._v(" "),
             _c("div", { staticClass: "text-6xl" }, [
               _c("i", {
-                class: "wi wi-owm-night-" + _vm.currentTemperature.icon
+                class:
+                  "wi wi-owm-" +
+                  _vm.currentTemperature.dayOrNight +
+                  "-" +
+                  _vm.currentTemperature.icon
               })
             ])
           ]
