@@ -1995,7 +1995,6 @@ __webpack_require__.r(__webpack_exports__);
       _this.location.name = "".concat(e.suggestion.name, ", ").concat(e.suggestion.country);
       _this.location.lat = e.suggestion.latlng.lat;
       _this.location.lng = e.suggestion.latlng.lng;
-      console.log(e);
     });
     placesAutocomplete.on("clear", function () {
       $address.textContent = "none";
@@ -2038,7 +2037,7 @@ __webpack_require__.r(__webpack_exports__);
         _this2.currentTemperature.actual = data.data[0].temp;
         _this2.currentTemperature.feels = data.data[0].temp;
         _this2.currentTemperature.summary = data.data[0].weather.description;
-        _this2.currentTemperature.icon = data.data[0].weather.icon;
+        _this2.currentTemperature.icon = data.data[0].weather.code;
         _this2.daily = data.data;
       })["catch"](function (err) {
         console.log(err);
@@ -37688,7 +37687,11 @@ var render = function() {
               ])
             ]),
             _vm._v(" "),
-            _vm._m(1)
+            _c("div", { staticClass: "text-6xl" }, [
+              _c("i", {
+                class: "wi wi-owm-night-" + _vm.currentTemperature.icon
+              })
+            ])
           ]
         ),
         _vm._v(" "),
@@ -37768,14 +37771,6 @@ var staticRenderFns = [
         _vm._v("Selected: "),
         _c("strong", { attrs: { id: "address-value" } }, [_vm._v("none")])
       ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "text-6xl" }, [
-      _c("i", { staticClass: "wi wi-owm-night-202" })
     ])
   }
 ]

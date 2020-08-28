@@ -29,7 +29,7 @@
           </div>
         </div>
         <div class="text-6xl">
-          <i class="wi wi-owm-night-202"></i>
+          <i :class="`wi wi-owm-night-${currentTemperature.icon}`"></i>
         </div>
       </div>
       <!-- end current wwather -->
@@ -85,8 +85,7 @@ export default {
       $address.textContent = e.suggestion.value; 
       this.location.name = `${e.suggestion.name}, ${e.suggestion.country}`;
       this.location.lat = e.suggestion.latlng.lat;
-      this.location.lng = e.suggestion.latlng.lng;
-      console.log(e)
+      this.location.lng = e.suggestion.latlng.lng; 
     });
 
     placesAutocomplete.on("clear", function() {
@@ -127,13 +126,8 @@ export default {
           this.currentTemperature.actual = data.data[0].temp;
           this.currentTemperature.feels = data.data[0].temp;
           this.currentTemperature.summary = data.data[0].weather.description;
-          this.currentTemperature.icon = data.data[0].weather.icon;
-
-         
-            this.daily = data.data; 
-           
-            
-         
+          this.currentTemperature.icon = data.data[0].weather.code;
+          this.daily = data.data; 
         })
         .catch(err => {
           console.log(err);
@@ -143,7 +137,6 @@ export default {
     toDayOfWeek(timestamp) {
       const newDate = new Date(timestamp * 1000);
       const days = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
-
       return days[newDate.getDay()];
     }
   }
