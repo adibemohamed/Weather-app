@@ -50,7 +50,7 @@
           <div class="w-4/6 py-4 flex items-center">
             <div class="">
                <div class="text-2xl">
-                <i :class="`wi wi-owm-night-${day.weather.code}`"></i>
+                <i :class="`wi wi-owm-night-${day.weather.code}`"></i> 
               </div>
             </div>
             <div class="ml-3">{{ day.weather.description }}</div>
@@ -129,9 +129,9 @@ export default {
           this.currentTemperature.summary = data.data[0].weather.description;
           this.currentTemperature.icon = data.data[0].weather.icon;
 
-          data.data.map(day => {
-            this.daily.push(day); 
-          });
+         
+            this.daily = data.data; 
+           
             
          
         })

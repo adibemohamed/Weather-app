@@ -2039,9 +2039,7 @@ __webpack_require__.r(__webpack_exports__);
         _this2.currentTemperature.feels = data.data[0].temp;
         _this2.currentTemperature.summary = data.data[0].weather.description;
         _this2.currentTemperature.icon = data.data[0].weather.icon;
-        data.data.map(function (day) {
-          _this2.daily.push(day);
-        });
+        _this2.daily = data.data;
       })["catch"](function (err) {
         console.log(err);
       });
