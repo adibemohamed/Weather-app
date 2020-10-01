@@ -13,7 +13,7 @@
 
 </head>
 <body class="bg-purple-300">
-    <div id="app"  class="flex justify-center pt-12">
+    <div id="app"  class="flex justify-center pt-6">
         <klima></klima>
     </div>
  </body>

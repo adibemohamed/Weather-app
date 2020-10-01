@@ -37670,7 +37670,7 @@ var render = function() {
     _c(
       "h1",
       {
-        staticClass: "text-white font-black  py-12 text-6xl w-full text-center"
+        staticClass: "text-white font-black py-2  text-6xl w-full text-center"
       },
       [_vm._v("\n    Fresh Weather\n  ")]
     ),
@@ -50148,8 +50148,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/adibe/weather-app/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/adibe/weather-app/resources/css/main.css */"./resources/css/main.css");
+__webpack_require__(/*! /home/adibe/Projects/weather-app/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/adibe/Projects/weather-app/resources/css/main.css */"./resources/css/main.css");
 
 
 /***/ })

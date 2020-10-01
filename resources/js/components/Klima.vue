@@ -1,6 +1,6 @@
 <template>
   <div class="text-white pb-0  w-128">
-    <h1 class="text-white font-black  py-12 text-6xl w-full text-center">
+    <h1 class="text-white font-black py-2  text-6xl w-full text-center">
       Fresh Weather
     </h1>
     <div class="place-input">
