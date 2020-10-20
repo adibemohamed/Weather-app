@@ -78,7 +78,7 @@ export default {
 
     var placesAutocomplete = places({
       appId: "plXPYTW07XSN",
-      apiKey: "235e8ffff339e06e22dacd3e304f47e8",
+      apiKey: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
       container: document.querySelector("#address")
     });
 
@@ -138,7 +138,12 @@ export default {
           this.currentTemperature.sunrise_ts = data.data[0].sunrise_ts;
           this.currentTemperature.ts = data.data[0].ts;
           this.daily = data.data;
-          this.currentTemperature.dayOrNight = this.dayOrNight(this.currentTemperature.sunrise_ts, this.currentTemperature.sunset_ts, this.currentTemperature.ts, this.currentTemperature.actual);
+          this.currentTemperature.dayOrNight = this.dayOrNight(
+            this.currentTemperature.sunrise_ts,
+            this.currentTemperature.sunset_ts,
+            this.currentTemperature.ts,
+            this.currentTemperature.actual
+          );
           console.log(data.data[0]);
           console.log(this.currentTemperature.dayOrNight);
         })
@@ -151,7 +156,7 @@ export default {
       const days = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
       return days[newDate.getDay()];
     },
-    dayOrNight(sunrise_ts, sunset_ts, ts, actual) { 
+    dayOrNight(sunrise_ts, sunset_ts, ts, actual) {
       var sunrise = [
         new Date(sunrise_ts).getHours(),
         new Date(sunrise_ts).getMinutes()
@@ -168,13 +173,13 @@ export default {
       var now_m = now.getHours() * 60 + now.getMinutes();
 
       if (now_m > sunset_m - 60 && now_m <= sunset_m + 60) {
-        return 'night';
+        return "night";
       } else if (now_m > sunrise_m - 60 && now_m <= sunrise_m + 60) {
-       return 'day';
+        return "day";
       } else if (now_m > sunrise_m + 60 && now_m <= sunset_m - 60) {
-        return 'day';
+        return "day";
       } else {
-         return 'night';
+        return "night";
       }
     }
   }
